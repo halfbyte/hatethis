@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="files/test.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <title>untitled</title>
+
+</head>
+
+<body>
+  <h1>wohin mit dem HASS!</h1>
+  <div>
+    <% if(hater) { %>
+      HATER: <%= hater %>
+    <% } else { %>
+      <a href="/login">Login</a> or <a href="/register">Register</a>
+    <% } %>
+  </div>
+  <ul>
+    <% for(var i=0;i<sites.length;i++) { %>
+      <li><%= sites[i].match(/^domains\.(.*)$/)[1] %></li>
+    <% } %>
+  </ul>
+  <p>Test: <a href="http://www.aol.de/slash">AOL.de</a> und <a href="http://www.heise.de/">heise.de</a></p>
+
+</body>
+</html>
