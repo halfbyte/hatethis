@@ -1,0 +1,128 @@
+@import url(baseline.compress.css);
+@import url(grid.css);
+@import url(baseline.mod.css);
+
+body {
+  background: rgb(24, 24, 24) url('bg_body.png') repeat-x 0px 90px;
+  color: #fff;
+  -webkit-text-stroke: 1px transparent;
+}
+
+h1, h2, h3 {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+a, a:visited {
+  color: #c00;
+}
+
+a:hover, a:visited:hover {
+  color: #f00;
+}
+
+body > header {
+  height: 90px;
+}
+
+header img, header p {
+  float: left;
+}
+
+header nav {
+  padding-top: 18px;
+  height: 72px;
+}
+
+header nav p {
+  margin-left: 10px;
+}
+
+header nav ul {
+  margin: 0;
+  overflow: hidden;
+}
+
+header nav li {
+  float: left;
+  padding: 0 10px;
+}
+
+.stage {
+  position: relative;
+  margin-bottom: 108px;
+  height: 234px;
+  background: #c00 url('stage.png') no-repeat;
+}
+
+#explanation, .hatings {
+  text-shadow: rgba(24, 24, 24, 0.75) 1px 1px 2px;
+}
+
+#explanation h1 {
+  margin-top: 36px;
+  font-size: 54px;
+}
+
+#explanation p {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.hatings {
+  margin-right: -3px;
+  width: 363px;
+  float: right;
+}
+
+.hatings span {
+  float: none;
+  display: block;
+  margin-top: 40px;
+  padding: 0 0 0 3px;
+  font-family: Consolas, "Lucida Console", Monaco, sans-serif;
+  font-size: 40px;
+  line-height: 45px;
+  letter-spacing: 9px;
+  background: transparent url('bg_number.png') repeat-x;
+  color: #ddd;
+}
+
+.hatings h2 {
+  margin-top: -3px;
+  padding-right: 3px;
+  text-align: right;
+}
+
+#hating, #blocking {
+  position: absolute;
+  bottom: -72px;
+  padding: 10px;
+  height: 106px;
+  width: 330px;
+  background: #ffc -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #ffd),color-stop(1.00, #ffa));
+  -webkit-border-radius: 10px;
+  -webkit-box-shadow: rgba(24, 24, 24, 0.5) 1px 1px 5px;
+  color: #000;
+}
+
+#hating {
+  left: 240px;
+}
+
+#blocking {
+  left: 600px;
+}
+
+#hating p, #blocking p {
+  margin-top: 9px;
+  width: 180px;
+  font-size: 15px;
+}
+
+#hating a, #blocking a {
+  font-weight: bold;
+  color: #000;
+}

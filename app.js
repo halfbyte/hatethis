@@ -7,6 +7,7 @@ var tmpl = require('./lib/template');
 var client = new redisclient.Client();
 var hashlib = require("./lib/hashlib");
 var qs = require("querystring");
+var utils = require("utils");
 
 get = nerve.get
 post = nerve.post
@@ -34,7 +35,7 @@ var hello = [
     client.connect(function() {
       client.keys("domains.*", function(err, value) {
         client.close();
-        var hater = req.session['hater-id'];
+        var hater = req.session ? req.session['hater-id'] : null;
         var sites = value;
         if(sites == ['']) {
           sites = [];
