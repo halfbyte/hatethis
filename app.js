@@ -7,6 +7,7 @@ var tmpl = require('./lib/template');
 var client = new redisclient.Client();
 var hashlib = require("./lib/hashlib");
 var qs = require("querystring");
+var utils = require("utils");
 
 get = nerve.get
 post = nerve.post
@@ -28,13 +29,13 @@ var hello = [
     client.connect(function() {
       client.keys("domains.*", function(err, value) {
         client.close();
-        sys.puts(req.session['hater-id'])
-        res.respond(tmpl.tmpl("templates/index.template", {sites: value, hater:req.session['hater-id']}));
+        var hater = req.session ? req.session['hater-id'] : null;
+        var sites = value || [];
+        res.respond(tmpl.tmpl("templates/index.template", { sites: sites, hater: hater}));
       });
     });
   }],
   [ get(/^\/files\/(.*)$/), function(req, res, path) {
-    sys.puts(path);
     nerve.serve_static_file("files/" + path, res);
   }],
   [get(/^\/STOP\/(http.*)$/), function(req, res, urli) {

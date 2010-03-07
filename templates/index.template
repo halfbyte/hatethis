@@ -20,7 +20,9 @@
   </div>
   <ul>
     <% for(var i=0;i<sites.length;i++) { %>
+      <% if(sites[i].length > 0) { %>
       <li><%= sites[i].match(/^domains\.(.*)$/)[1] %></li>
+      <% } %>
     <% } %>
   </ul>
   <p>Test: <a href="http://www.aol.de/slash">AOL.de</a> und <a href="http://www.heise.de/">heise.de</a></p>
