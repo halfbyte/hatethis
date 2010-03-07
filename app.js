@@ -22,19 +22,28 @@ function getPostParams(req, callback){
    });
 }
 
+function template(template, data, layout) {
+  var baseData = data;
+  baseData['__innerContent'] = tmpl.tmpl("templates/" + template, data);
+  return tmpl.tmpl(layout ? ("templates/layouts/" + layout) : "templates/layouts/application.template", baseData);
+}
+
 
 var hello = [
   ["/", function(req, res) {
     client.connect(function() {
       client.keys("domains.*", function(err, value) {
         client.close();
-        sys.puts(req.session['hater-id'])
-        res.respond(tmpl.tmpl("templates/index.template", {sites: value, hater:req.session['hater-id']}));
+        var hater = req.session['hater-id'];
+        var sites = value;
+        if(sites == ['']) {
+          sites = [];
+        }
+        res.respond(template("index.template", {hater: hater, sites: sites}));
       });
     });
   }],
   [ get(/^\/files\/(.*)$/), function(req, res, path) {
-    sys.puts(path);
     nerve.serve_static_file("files/" + path, res);
   }],
   [get(/^\/STOP\/(http.*)$/), function(req, res, urli) {
@@ -54,7 +63,6 @@ var hello = [
     });
   }],
   [get(/^\/((http|https).*)$/), function(req, res, urli) {
-    sys.puts(urli);
     var parsedUrl = url.parse(urli);
     try {
       client.connect(function() {
@@ -79,14 +87,12 @@ var hello = [
       client.connect(function() {
         client.get("username:" + obj.email + ":uid", function(err, uid) {
           if (!err) {
-            sys.puts(uid);
             if (uid != null) {
               client.get("uid:" + uid + ":password", function(err, value) {
                 if(!err) {
                   sys.puts("saved: " + value);
                   sys.puts("hashed: " + hashlib.sha1(obj.password));
                   if (value == hashlib.sha1(obj.password)) {
-                    sys.puts("hater-id: " + obj.email);
                     req.session['hater-id'] = obj.email
                     res.respond({status_code: 301, headers: {Location: "/"}, content: "Location: /"})
                   } else {
