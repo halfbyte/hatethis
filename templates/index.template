@@ -1,68 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link rel="stylesheet" href="files/application.css"/>
-  <script src="files/modernizr-1.1.min.js" type="text/javascript" charset="utf-8"></script>
-	<title>hate this</title>
-</head>
-
-<body>
-  <div class="container">
-    <header class="column span-24">
-      <nav>
-        <a href=""><img src="files/logo.png" alt="Logo"></a>
-        <p>
-        <% if(hater) { %>
-          Hello, <%= hater %>! Let's dome same hating!
-        <% } else { %>
-          <a href="/login">Login</a> or <a href="/register">Register</a>
+<section class="column span-24 stage">
+  <article id="explanation" class="column span-12">
+    <h1>You hate web crap?</h1>
+    <p>
+      <b>Hate</b>, <b>mark</b> and <b>block</b> the <b>worst of the Web</b>. <br/>
+      Learn what other people hate and subscribe <br/>
+      to their block lists.
+    </p>
+  </article>
+  <article class="column span-12 last hatings">
+    <span>100.000.123</span>
+    <h2>hate events so far</h2>
+  </article>
+  <article id="hating">
+    <h3>Hate</h3>
+    <p>Drag our <a href="">bookmarklet</a> into your browser toolbar. Use it to mark every website you hate.</p>
+  </article>
+  <article id="blocking">
+    <h3>Block</h3>
+    <p>Install our <a href="">Greasemonkey script</a>. Never see a site you hate or even a link to it again.</p>
+  </article>
+</section>
+<section class="column span-24 lists">
+  <article class="column span-8">
+    <h3>Recently hated websites</h3>
+    <ul>
+      <% for(var i=0;i<sites.length;i++) { %>
+        <% if(sites[i].length > 0) { %>
+        <li><%= sites[i].match(/^domains\.(.*)$/)[1] %></li>
         <% } %>
-        </p>
-      </nav>
-    </header>
-    <section class="column span-24 stage">
-      <article id="explanation" class="column span-12">
-        <h1>You hate web crap?</h1>
-        <p>
-          <b>Hate</b>, <b>mark</b> and <b>block</b> the <b>worst of the Web</b>. <br/>
-          Learn what other people hate and subscribe <br/>
-          to their block lists.
-        </p>
-      </article>
-      <article class="column span-12 last hatings">
-        <span>100.000.123</span>
-        <h2>hate events so far</h2>
-      </article>
-      <article id="hating">
-        <h3>Hate</h3>
-        <p>Drag our <a href="">bookmarklet</a> into your browser toolbar. Use it to mark every website you hate.</p>
-      </article>
-      <article id="blocking">
-        <h3>Block</h3>
-        <p>Install our <a href="">Greasemonkey script</a>. Never see a site you hate or even a link to it again.</p>
-      </article>
-    </section>
-    <section class="column span-24 lists">
-      <article class="column span-8">
-        <h3>Recently hated websites</h3>
-        <ul>
-          <% for(var i=0;i<sites.length;i++) { %>
-            <% if(sites[i].length > 0) { %>
-            <li><%= sites[i].match(/^domains\.(.*)$/)[1] %></li>
-            <% } %>
-          <% } %>
-        </ul>
-      </article>
-      <article class="column span-8">
-        <h3>Most hated websites</h3>
-      </article>
-      <article class="column span-8 last">
-        <h3>Most active haters</h3>
-      </article>
-    </section>
-  </div>
-</body>
-</html>
+      <% } %>
+    </ul>
+  </article>
+  <article class="column span-8">
+    <h3>Most hated websites</h3>
+  </article>
+  <article class="column span-8 last">
+    <h3>Most active haters</h3>
+  </article>
+</section>

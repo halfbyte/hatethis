@@ -23,10 +23,12 @@ function getPostParams(req, callback){
    });
 }
 
-function template(template, data, layout) {
+function template(req, res, template, data, layout) {
   var baseData = data;
   baseData['__innerContent'] = tmpl.tmpl("templates/" + template, data);
-  return tmpl.tmpl(layout ? ("templates/layouts/" + layout) : "templates/layouts/application.template", baseData);
+  baseData['hater'] = req.session ? req.session['hater-id'] : null;
+
+  res.respond(tmpl.tmpl(layout ? ("templates/layouts/" + layout) : "templates/layouts/application.template", baseData));
 }
 
 
@@ -35,12 +37,11 @@ var hello = [
     client.connect(function() {
       client.keys("domains.*", function(err, value) {
         client.close();
-        var hater = req.session ? req.session['hater-id'] : null;
         var sites = value;
         if(sites == ['']) {
           sites = [];
         }
-        res.respond(template("index.template", {hater: hater, sites: sites}));
+        template(req, res, "index.template", {sites: sites});
       });
     });
   }],
@@ -81,7 +82,7 @@ var hello = [
     }
   }],
   [get("/login"), function(req, res) {
-    res.respond(tmpl.tmpl("templates/login.template", {}));
+    template(req, res, "login.template", {});
   }],
   [post("/login"), function(req, res) {
     getPostParams(req, function( obj ) {
@@ -114,7 +115,7 @@ var hello = [
     });
   }],
   [get("/register"), function(req, res) {
-    res.respond(tmpl.tmpl("templates/register.template", {}));
+    template(req, res, "register.template", {});
   }],
   [post("/register"), function(req, res) {
     getPostParams(req, function( obj ) {
