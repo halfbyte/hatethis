@@ -2,6 +2,13 @@
 @import url(grid.css);
 @import url(baseline.mod.css);
 
+@font-face {
+  font-family: "Base";
+  src: url("Base_02.eot");
+  src: local("Base 02"), local("Base 02"),
+    url("Base_02.ttf") format("truetype");
+}
+
 body {
   background: rgb(24, 24, 24) url('bg_body.png') repeat-x 0px 90px;
   color: #fff;
@@ -55,7 +62,7 @@ header nav li {
   background: #c00 url('stage.png') no-repeat;
 }
 
-#explanation, .hatings {
+#explanation {
   text-shadow: rgba(24, 24, 24, 0.75) 1px 1px 2px;
 }
 
@@ -65,35 +72,26 @@ header nav li {
 }
 
 #explanation p {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 300;
   font-size: 22px;
   line-height: 27px;
 }
 
 .hatings {
-  margin-right: -3px;
-  width: 363px;
-  float: right;
-}
-
-.hatings span {
-  float: none;
-  display: block;
   margin-top: 40px;
-  padding: 0 0 0 3px;
-  font-family: Consolas, "Lucida Console", Monaco, sans-serif;
-  font-size: 40px;
-  line-height: 45px;
-  letter-spacing: 9px;
-  background: transparent url('bg_number.png') repeat-x;
-  color: #ddd;
+  font-family: "Base", "HelveticaNeue", "Helvetica Neue", Helvetica, sans-serif;
+  color: #181818;
+  text-align: right;
 }
 
-.hatings h2 {
-  margin-top: -3px;
-  padding-right: 3px;
-  text-align: right;
+.hatings p {
+text-align: right;
+  font-size: 54px;
+}
+
+.hatings figcaption {
+  font-size: 22px;
 }
 
 #hating, #blocking {

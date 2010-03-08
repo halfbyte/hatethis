@@ -2,17 +2,17 @@
   <article id="explanation" class="column span-12">
     <h1>You hate web crap?</h1>
     <p>
-      <b>Hate</b>, <b>mark</b> and <b>block</b> the <b>worst of the Web</b>. <br/>
+      <b>Hatemark</b> and <b>block</b> the <b>worst of the Web</b>. <br/>
       Learn what other people hate and subscribe <br/>
       to their block lists.
     </p>
   </article>
-  <article class="column span-12 last hatings">
-    <span>100.000.123</span>
-    <h2>hate events so far</h2>
-  </article>
+  <figure class="column span-12 last hatings">
+    <p>100.000.123</p>
+    <figcaption>hate events so far</figcaption>
+  </figure>
   <article id="hating">
-    <h3>Hate</h3>
+    <h3>Hatemark</h3>
     <p>Drag our <a href="">bookmarklet</a> into your browser toolbar. Use it to mark every website you hate.</p>
   </article>
   <article id="blocking">
